@@ -1,21 +1,15 @@
-const express = require('express');
-const mysql = require('mysql2');
-const app = express();
+const app = require('./app');
 
-const db = mysql.createPool({
-  host: 'db',
-  user: 'root',
-  password: 'root',
-  database: 'test',
-});
+init();
 
-
-app.use(express.json());
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
+async function init() {
+  try {
+    app.listen(3000, () => {
+      console.log('Express App Listening on Port 3000');
+    });
+  } catch (error) {
+    console.log(error);
+    console.error(`An error occurred: ${JSON.stringify(error)}`);
+    process.exit(1);
+  }
+}
