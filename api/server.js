@@ -9,6 +9,7 @@ const db = mysql.createPool({
   database: 'test',
 });
 
+
 app.use(express.json());
 
 app.get('/', (req, res) => {

@@ -6,7 +6,8 @@ services:
       dockerfile: Dockerfile
     container_name: ddb-api
     volumes:
-      - .:/app
+      - ./api:/app
+      - /app/node_modules
     ports:
       - "3000:3000"
     depends_on:
