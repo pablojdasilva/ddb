@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const app = express();
+const playerController = require('./controllers/playerController.js');
 
 const db = mysql.createPool({
   host: 'db',
@@ -12,8 +13,6 @@ const db = mysql.createPool({
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.get('/admin/player',playerController.getPlayers);
 
 module.exports = app;
