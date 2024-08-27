@@ -1,18 +1,20 @@
 const express = require('express');
-const mysql = require('mysql2');
-const app = express();
+const bodyParser = require('body-parser');
+const mysql = require('mysql2/promise');
 const playerController = require('./controllers/playerController.js');
 
-const db = mysql.createPool({
+const connection = mysql.createPool({
   host: 'db',
   user: 'root',
-  password: 'root',
-  database: 'test',
+  password: 'r00t',
+  database: 'ddb',
 });
 
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+playerController.initialize(connection);
 
-app.use(express.json());
-
-app.get('/admin/player',playerController.getPlayers);
+app.get('/admin/player/:id',playerController.getPlayers);
 
 module.exports = app;
