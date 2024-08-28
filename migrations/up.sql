@@ -143,14 +143,14 @@ COLLATE=latin1_swedish_ci;
 
 CREATE TABLE ddb.UserTeamRankingVote (
 	Id BIGINT auto_increment NOT NULL,
-	TeamRankingId BIGINT NOT NULL,
+	TeamsOfTheWeekId BIGINT NOT NULL,
 	TeamId BIGINT NOT NULL,
 	UserId BIGINT NOT NULL,
 	`Position` BIGINT NOT NULL,
 	CreatedDate DATETIME NOT NULL,
 	UpdatedDate DATETIME NOT NULL,
 	CONSTRAINT UserTeamRankingVote_PK PRIMARY KEY (Id),
-	CONSTRAINT UserTeamRankingVote_TeamRanking_FK FOREIGN KEY (Id) REFERENCES `ddb-ranking`.TeamRanking(Id),
+	CONSTRAINT UserTeamRankingVote_TeamsOfTheWeekId_FK FOREIGN KEY (Id) REFERENCES ddb.TeamsOfTheWeek(Id),
     CONSTRAINT UserTeamRankingVote_Team_FK FOREIGN KEY (Id) REFERENCES `ddb-admin`.Team(Id),
 	CONSTRAINT UserTeamRankingVote_User_FK FOREIGN KEY (Id) REFERENCES ddb.`User`(Id)
 )
@@ -163,14 +163,14 @@ COLLATE=latin1_swedish_ci;
 CREATE TABLE ddb.UserPlayerRankingVote (
 	Id BIGINT auto_increment NOT NULL,
 	PlayerId BIGINT NOT NULL,
-	PlayerRankingId BIGINT NOT NULL,
+	PlayersOfTheWeekId BIGINT NOT NULL,
 	UserId BIGINT NOT NULL,
 	`Position` BIGINT NOT NULL,
 	CreatedDate DATETIME NOT NULL,
 	UpdatedDate DATETIME NOT NULL,
 	CONSTRAINT UserPlayerRankingVote_PK PRIMARY KEY (Id),
 	CONSTRAINT UserPlayerRankingVote_Player_FK FOREIGN KEY (Id) REFERENCES `ddb-admin`.Player(Id),
-	CONSTRAINT UserPlayerRankingVote_PlayerRanking_FK FOREIGN KEY (Id) REFERENCES `ddb-ranking`.PlayerRanking(Id),
+	CONSTRAINT UserPlayerRankingVote_PlayersOfTheWeekId_FK FOREIGN KEY (Id) REFERENCES ddb.PlayersOfTheWeek(Id),
 	CONSTRAINT UserPlayerRankingVote_User_FK FOREIGN KEY (Id) REFERENCES ddb.`User`(Id)
 )
 ENGINE=InnoDB
