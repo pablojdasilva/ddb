@@ -1,2 +1,2 @@
 # ddb
-Ranking for internet show donos da bala 
+Ranking for the internet show 'Donos da Bala'
