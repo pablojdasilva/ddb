@@ -19,6 +19,6 @@ votingController.initialize(mysqlConnectionPool)
 
 app.get('/admin/player/:id',playerController.getPlayers);
 app.get('/api/voting/teams',votingController.getTeams);
-app.get('/api/voting/players');
+app.get('/api/voting/players', votingController.getPlayers);
 
 module.exports = app;
