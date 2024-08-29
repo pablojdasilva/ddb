@@ -161,7 +161,7 @@ COLLATE=latin1_swedish_ci;
 -- ddb.UserPlayerRankingVote definition
 
 CREATE TABLE ddb.UserPlayerRankingVote (
-	Id BIGINT auto_increment NOT NULL,
+	Id BIGINT auto_increment NOT NULL, 
 	PlayerId BIGINT NOT NULL,
 	PlayersOfTheWeekId BIGINT NOT NULL,
 	UserId BIGINT NOT NULL,
