@@ -15,7 +15,7 @@ class PlayerController {
               return res.status(402).json({ error: 'wrong parameters' });
           }
           const player =  await this.playerRepository.getPlayerById(playerId);
-          if(player === null ) {
+          if(player === null  || player === undefined) {
               return res.status(404).json({ error: 'There is no player' });
           }
           res.send(player);
